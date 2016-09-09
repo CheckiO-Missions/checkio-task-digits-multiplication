@@ -1,0 +1,46 @@
+<img class="for_info_only half" title="juggler" src="{{MEDIA}}juggler.png" alt="juggler" style="max-height: 300px;float: left;"/>
+<p>
+    Gegeben ist eine positive Ganzzahl.
+    Deine Funktion soll das Produkt der Ziffern, ohne enthaltene Nullen, berechnen.
+</p>
+
+<p>
+    Zum Beispiel: Die Zahl ist 123405. Das Resultat ist 1*2*3*4*5=120 (Vergiss nicht die Nullen auszulassen).
+</p>
+
+<p>
+    <strong>Eingabe: </strong> Eine positive Ganzzahl (Integer).
+</p>
+
+<p>
+    <strong>Ausgabe: </strong> Das Produkt der einzelnen Ziffern als Ganzzahl.
+</p>
+
+<div style="clear: both;"></div>
+
+<div class="for_info_only">
+    <p>
+        <strong>Beispiel:</strong>
+    </p>
+    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
+digitsMultip(123405) == 120
+digitsMultip(999) == 729
+digitsMultip(1000) == 1
+digitsMultip(1111) == 1
+{% else %}
+checkio(123405) == 120
+checkio(999) == 729
+checkio(1000) == 1
+checkio(1111) == 1
+{% endif %}</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>Wozu ist das gut: </strong>
+    Diese Aufgabe kann dir beibringen wie man ein Problem mittels einfacher Datentyp-Umwandlung löst.
+</p>
+
+<p>
+    <strong>Bedingung: </strong>
+        0 &lt; number &lt; 10<sup>6</sup>
+</p>
