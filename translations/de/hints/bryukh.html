@@ -1,0 +1,61 @@
+
+<body data-author="bryukh">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Idee, wie ich anfangen soll, diese Mission zu lösen
+    </div>
+    <div class="answer">
+        Es ist notwendig, die Ziffern von der Zahl zu separieren.
+        Du kannst das einfach tun, indem du eine Zahl in eine Zeichenkette (String) konvertierst und damit wie mit einer Sequenz arbeitest.
+<pre class="brush: python">
+str(20123) == "20123"
+s = str(102)
+s[0] == "1"
+s[2] == "2"
+for x in str(number):
+    something
+    </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich benötige etwas Hilfe, um mit der Mission weiterfahren zu können
+    </div>
+    <div class="answer">
+        Du kannst jedes Zahlzeichen einer Zeichenkette in eine Zahl umwandeln mit "int()"
+<pre class="brush: python">
+for s in str(number):
+    n = int(s)
+    </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich bin auf halbem Wege verloren. Ich brauche Hilfe!
+    </div>
+    <div class="answer">
+        Multipliziere Zahlen und sammle das Resultat
+<pre class="brush: python">
+result = 1
+for s in str(number):
+    n = int(s)
+    ...
+    result *= n # result = result * n
+    </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich komme nicht weiter. Ich brauche einen kleinen Hinweis.
+    </div>
+    <div class="answer">
+        Im letzten Hinweis "vergass" ich die Nullen. Natürlich solltest Du diese überspringen.
+<pre class="brush: python">
+if not n:  # if n == 0:
+    continue
+    </pre>
+    </div>
+</div>
+
+
+</body>
