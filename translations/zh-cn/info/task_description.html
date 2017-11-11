@@ -1,0 +1,45 @@
+<img class="for_info_only half" title="juggler" src="{{MEDIA}}juggler.png" alt="juggler" style="max-height: 300px;float: left;"/>
+<p>
+    给你一个正整数，请你写一个函数来实现：传入正整数的每一位（不包括00）的乘积
+</p>
+
+<p>
+    例如：给你 123405， 你应该这样处理 1*2*3*4*5=120（别忘了把0丢掉）
+</p>
+
+<p>
+    <strong>输入: </strong> 一个正整数.
+</p>
+
+<p>
+    <strong>输出: </strong> 正整数的每一位的乘积
+</p>
+
+<div style="clear: both;"></div>
+
+<div class="for_info_only">
+    <p>
+        <strong>举个栗子:</strong>
+    </p>
+    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
+digitsMultip(123405) == 120
+digitsMultip(999) == 729
+digitsMultip(1000) == 1
+digitsMultip(1111) == 1
+{% else %}
+checkio(123405) == 120
+checkio(999) == 729
+checkio(1000) == 1
+checkio(1111) == 1
+{% endif %}</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>你将学到: </strong>
+    在这个任务中你将学会一些简单的数据类型的转换。
+</p>
+
+<p>
+    <strong>前提条件: </strong>
+        0 &lt; number &lt; 10<sup>6</sup>
+</p>
