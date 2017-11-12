@@ -34,6 +34,10 @@ TESTS = {
         {"input": 1,
          "answer": 1
         },
+        {
+            "inpupt": 9,
+            "answer": 9,
+        },
         {"input": 736635,
          "answer": 11340
         },
