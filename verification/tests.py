@@ -35,7 +35,7 @@ TESTS = {
          "answer": 1
         },
         {
-            "inpupt": 9,
+            "input": 9,
             "answer": 9,
         },
         {"input": 736635,
