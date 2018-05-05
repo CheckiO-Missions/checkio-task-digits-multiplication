@@ -1,4 +1,4 @@
-def checkio(number):
+def checkio(number: int) -> int:
 
     return 1
 
