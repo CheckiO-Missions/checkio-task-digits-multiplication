@@ -21,17 +21,7 @@
     <p>
         <strong>举个栗子:</strong>
     </p>
-    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
-digitsMultip(123405) == 120
-digitsMultip(999) == 729
-digitsMultip(1000) == 1
-digitsMultip(1111) == 1
-{% else %}
-checkio(123405) == 120
-checkio(999) == 729
-checkio(1000) == 1
-checkio(1111) == 1
-{% endif %}</pre>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 <p class="for_info_only">
