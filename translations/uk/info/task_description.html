@@ -11,38 +11,29 @@
 
 
 <p>
-    <strong>Вхідні дані: </strong> Додатне ціле число.
+    <strong>Вхідні дані:</strong> Додатне ціле число.
 </p>
 
 <p>
-    <strong>Вихідні дані: </strong> Добуток чисел як ціле число (int).
+    <strong>Вихідні дані:</strong> Добуток чисел як ціле число (int).
 </p>
 
-<div style="clear: both;"></div>
 
 <div class="for_info_only">
     <p>
         <strong>Приклади:</strong>
     </p>
-    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
-digitsMultip(123405) == 120
-digitsMultip(999) == 729
-digitsMultip(1000) == 1
-digitsMultip(1111) == 1
-{% else %}
-checkio(123405) == 120
-checkio(999) == 729
-checkio(1000) == 1
-checkio(1111) == 1
-{% endif %}</pre>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 <p class="for_info_only">
-    <strong>Як це використовується: </strong>
+    <strong>Як це використовується:</strong>
     З цього завдання можете навчитися як використовувати просте перетворення типів даних.
 </p>
 
 <p>
-    <strong>Передумови: </strong><br>
-        0 &lt; number &lt; 10<sup>6</sup>
+    <strong>Передумови:</strong><br />
+    <ul>
+    <li>0 &lt; number &lt; 10<sup>6</sup></li>
+    </ul> 
 </p>
