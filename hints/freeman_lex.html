@@ -1,0 +1,170 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <i>I have no idea how to start solving this mission.</i>
+    </div>
+    <div class="answer">
+        <p>
+            General idea is to convert given <b class="code">number</b> into string, and then take each character separately and convert it back into integer.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Ok, what should I start from?</i>
+    </div>
+    <div class="answer">
+        <p>
+            First, you may declare variable <b class="code">res</b> with initial value <b class="code">1</b> to store the result of multiplication. Notice, that if you need to aggregate the result of adding or subtracting, you use the initial value <b class="code">0</b>, but in case of multiplying it should be <b class="code">1</b>. 
+        </p>
+        <p>
+            Second, you need to convert given <b class="code">number</b> into string to be able to take digits one-by-one. Read about built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> function to do it. 
+        </p>
+        <pre class="brush: python">
+res = 1
+text = str(number)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            Ok, how to get separate characters from the string?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">text</b>. Since you will use variable <b class="code">text</b> only once, you don't actually need this variable.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            But each character is a string now. What to do with it?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Yes. And you need to convert each <b class="code">char</b> back to integer inside loop.
+            Do it with built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a> function.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            I only need digits not equal 0. Help me to check them.
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            This checking is very simple with <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a>. You may write <b class="code">if num != 0</b>, but Python is smart and consider each non-zero number as boolean <b class="code">True</b>. So you may just write the following. 
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    if num:
+        ...
+        </pre>
+        <p>
+            You may use <a target="_blank" href="https://towardsdatascience.com/the-walrus-operator-in-python-a315e4f84583">walrus operator</a> to write the two last expressions more compact. Walrus operator allows to assign expression to variable right in first usage.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    if num := int(char):
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            I fill it's almost all, but my <b class="code">res</b> is still equals <b class="code">1</b>. How to accumulate multiplication result?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            if <b class="code">num</b> is not equal 0 (inside <b class="code">if statement</b>) multiply your <b class="code">res</b> with <b class="code">num</b> and reassign back to <b class="code">res</b>
+        </p>
+        <pre class="brush: python">
+res = res * num
+# or
+res *= num
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>So, how my final solution should look like?</i>
+    </div>
+    <div class="answer">
+        <p>
+            You just need to wrap your code into function expression and return your <b class="code">res</b>.
+        </p>
+        <p>Here is the whole solution:</p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    for char in str(number):
+        if num := int(char):
+            res *= num
+            
+    return res
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!</i>
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            In this solution you do no conversion into string, but divide <b class="code">number</b> by <b class="code">10</b> until <b class="code">number</b> become less then 1. Multiply <b class="code">res</b> and reminder from the division if it's not equal 0.
+        </p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    while number > 1:
+        number, rem = divmod(number, 10)
+        res = res * (1, rem)[bool(rem)]
+        
+    return res
+        </pre>
+        <p>
+            In this solution you make a generator to filter off zero characters, join them with multiply sign (between each two) and then evaluate the string - convert it from string to expression and do necessary computations.
+        </p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    return eval('*'.join(char for char in str(number) if char != '0'))
+        </pre>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Thanks! I know and understand more now! Everything works fine!</i>
+    </div>
+    <div class="answer">
+        Glad to hear it!
+    </div>
+</div>
+</body>
