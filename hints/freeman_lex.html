@@ -5,7 +5,7 @@
     </div>
     <div class="answer">
         <p>
-            General idea is to convert given <b class="code">number</b> into string, and then take each character separately and convert it back into integer.
+            General idea is to convert given <b class="code">number</b> into string and then take each character separately and convert it back into integer.
         </p>
     </div>
 </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="answer">
         <p>
-            First, you may declare variable <b class="code">res</b> with initial value <b class="code">1</b> to store the result of multiplication. Notice, that if you need to aggregate the result of adding or subtracting, you use the initial value <b class="code">0</b>, but in case of multiplying it should be <b class="code">1</b>. 
+            First, you may declare variable <b class="code">res</b> with initial value <b class="code">1</b> to store the result of multiplication. Notice, that if you need to aggregate the result of adding, you use the initial value <b class="code">0</b>, but in case of multiplying it should be <b class="code">1</b>. 
         </p>
         <p>
             Second, you need to convert given <b class="code">number</b> into string to be able to take digits one-by-one. Read about built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> function to do it. 
@@ -34,7 +34,7 @@ text = str(number)
     </div>
     <div class="answer">
         <p>
-            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">text</b>. Since you will use variable <b class="code">text</b> only once, you don't actually need this variable.
+            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">text</b>. Since you will use variable <b class="code">text</b> only once, you don't actually need to declare it.
         </p>
         <pre class="brush: python">
 res = 1
@@ -51,8 +51,7 @@ for char in str(number):
     </div>
     <div class="answer">
         <p>
-            Yes. And you need to convert each <b class="code">char</b> back to integer inside loop.
-            Do it with built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a> function.
+            Yes. And you need to convert each <b class="code">char</b> back to integer inside loop.Do it with built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a> function.
         </p>
         <pre class="brush: python">
 res = 1
@@ -98,7 +97,7 @@ for char in str(number):
     </div>
     <div class="answer">
         <p>
-            if <b class="code">num</b> is not equal 0 (inside <b class="code">if statement</b>) multiply your <b class="code">res</b> with <b class="code">num</b> and reassign back to <b class="code">res</b>
+            if <b class="code">num</b> is not equal 0 (inside <b class="code">if statement</b>), multiply your <b class="code">res</b> with <b class="code">num</b> and reassign back to <b class="code">res</b>
         </p>
         <pre class="brush: python">
 res = res * num
@@ -113,7 +112,7 @@ res *= num
     </div>
     <div class="answer">
         <p>
-            You just need to wrap your code into function expression and return your <b class="code">res</b>.
+            You just need to wrap the code into function expression and return your <b class="code">res</b>.
         </p>
         <p>Here is the whole solution:</p>
         <pre class="brush: python">
@@ -136,7 +135,7 @@ def checkio(number: int) -> int:
     <div class="answer">
         <p>Sure, grab it!</p>
         <p>
-            In this solution you do no conversion into string, but divide <b class="code">number</b> by <b class="code">10</b> until <b class="code">number</b> become less then 1. Multiply <b class="code">res</b> and reminder from the division if it's not equal 0.
+            In this solution you do no conversion into string, but divide <b class="code">number</b> by <b class="code">10</b> until <b class="code">number</b> becomes less then 1. Multiply <b class="code">res</b> and reminder from the division if it's not equal 0.
         </p>
         <pre class="brush: python">
 def checkio(number: int) -> int:
