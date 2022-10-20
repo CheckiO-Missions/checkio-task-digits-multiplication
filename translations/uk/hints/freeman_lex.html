@@ -1,0 +1,169 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <i>Я не маю уявлення, як почати розв'язувати цю місію.</i>
+    </div>
+    <div class="answer">
+        <p>
+            Загалом, ідея - конвертувати дане число <b class="code">number</b> в рядок і потім брати кожен символ окремо і конвертувати його назад в число.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Добре, з чого мені почати?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Спершу ти можеш проголосити змінну <b class="code">res</b> з початковим значенням <b class="code">1</b> для збереження результатів множення. Зауваж, коли тобі потрібно накопичити результат додавання, ти використовуєш початкове значення <b class="code">0</b>, але у випадку множення це має бути <b class="code">1</b>. 
+        </p>
+        <p>
+            По-друге, тобі потрібно конвертувати дане число <b class="code">number</b> у рядок, щоб мати змогу брати цифри одну за одною. Прочитай про вбудовану функцію <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a>, щоб це зробити.
+        </p>
+        <pre class="brush: python">
+res = 1
+text = str(number)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            Як мені брати окремі символи з рядка?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Використай цикл <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for</a> для проходження по <b class="code">text</b>. Оскільки ти використаєш змінну <b class="code">text</b> лише раз, то тобі насправді не потрібно її проголошувати.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            Але ж кожен символ зараз це рядок. Що із цим робити?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Так. І ти маєш перетворити кожен символ <b class="code">char</b> назад в число всередині циклу. Зроби це із вбудованою функцією <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a>.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            Мені потрібні лише цифри відмінні від 0. Допоможи мені їх перевірити.
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Ця перевірка дуже проста з <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">виразом if</a>. Ти можеш написати <b class="code">if num != 0</b>, але Python розумний і розглядає кожне не нульове число як логічне <b class="code">True</b>. Тому тобі достатньо написати наступне. 
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    if num:
+        ...
+        </pre>
+        <p>
+            Ти можеш використати <a target="_blank" href="https://towardsdatascience.com/the-walrus-operator-in-python-a315e4f84583">"моржевий" оператор</a>, щоб записати два останні вирази більш компактно. Цей оператор дозволяє присвоїти вираз змінній при першому використанні.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    if num := int(char):
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>
+            Я відчуваю, що це майже все, але моя змінна <b class="code">res</b> все ще рівна <b class="code">1</b>. Як накопичити результат множення?
+        </i>
+    </div>
+    <div class="answer">
+        <p>
+            Якщо <b class="code">num</b> не рівний 0 (всередині виразу <b class="code">if</b>), помнож свій <b class="code">res</b> з <b class="code">num</b> і присвоюй знову до <b class="code">res</b>
+        </p>
+        <pre class="brush: python">
+res = res * num
+# або
+res *= num
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>То як має виглядати моє остаточне рішення?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Тобі лише потрібно обгорнути код у вираз функції і повернути твій <b class="code">res</b>.
+        </p>
+        <p>Ось повний розв'язок:</p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    for char in str(number):
+        if num := int(char):
+            res *= num
+            
+    return res
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!</i>
+    </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>
+            У цьому розв'язку ти не робиш ніяких перетворень у рядок, а ділиш <b class="code">number</b> на <b class="code">10</b> поки <b class="code">number</b> не стане меншим 1. Множ <b class="code">res</b> і остачу від ділення, якщо вона не дорівнює 0.
+        </p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    while number > 1:
+        number, rem = divmod(number, 10)
+        res = res * (1, rem)[bool(rem)]
+        
+    return res
+        </pre>
+        <p>
+            У цьому розв'язку ти робиш генератор, щоб відфільтрувати нульові символи, з'єднуєш інші знаком множення (між кожними двома) і потім виконуєш отриманий рядок - він конвертується з рядка у вираз і робляться відповідні розрахунки.
+        </p>
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    return eval('*'.join(char for char in str(number) if char != '0'))
+        </pre>
+        <p><b>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</i>
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>
