@@ -115,6 +115,7 @@ res *= num
             You just need to wrap the code into a function expression and return your <b class="code">res</b>.
         </p>
         <p>Here is the whole solution:</p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(number: int) -> int:
 
@@ -125,6 +126,7 @@ def checkio(number: int) -> int:
             
     return res
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -137,6 +139,7 @@ def checkio(number: int) -> int:
         <p>
             In this solution you do no conversion into string, but divide <b class="code">number</b> by <b class="code">10</b> until <b class="code">number</b> becomes less than 1. Multiply <b class="code">res</b> and reminder from the division if it's not equal 0.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(number: int) -> int:
 
@@ -147,14 +150,17 @@ def checkio(number: int) -> int:
         
     return res
         </pre>
+        </div>
         <p>
             In this solution you make a generator to filter off zero characters, join them with multiply sign (between each two) and then evaluate the string - convert it from string to expression and do necessary computations.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(number: int) -> int:
 
     return eval('*'.join(char for char in str(number) if char != '0'))
         </pre>
+        </div>
         <p><b>Click "Best solutions" at mission menu and see a lot of other interesting solutions!</b></p>
     </div>
 </div>
