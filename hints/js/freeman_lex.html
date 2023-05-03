@@ -1,0 +1,173 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>I have no idea how to start solving this mission.</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 The general idea is to convert a given <b class="code">data</b> into string and then take each character separately and convert it back into integer.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Ok, what should I start from?</p>
+    </div>
+    <div class="answer">
+        <p>
+            First, you may declare variable <b class="code">res</b> with initial value <b class="code">1</b> to store the result of multiplication. Notice, that if you need to aggregate the result of adding, you use the initial value <b class="code">0</b>, but in case of multiplying it should be <b class="code">1</b>. 
+        </p>
+        <p>
+            Second, you need to convert a given <b class="code">data</b> into string to be able to take digits one-by-one. Read about <a target="_blank" href="https://www.w3schools.com/jsref/jsref_string.asp">String()</a> method to do it. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data);
+        </pre>
+        <p>
+            Now you need to convert the string into array with <a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> method with argument of empty character.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data).split("");
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, how to get separate characters from the array?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Use <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> to iterate over the array. Since you will use variable <b class="code">text</b> only once, you don't actually need to declare it.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            But each character is a string now. What to do with it?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Yes. And you need to convert each <b class="code">char</b> back to integer inside the loop. Do it with <a target="_blank" href="https://www.w3schools.com/jsref/jsref_number.asp">Number()</a> method.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            I only need digits not equal 0. Help me to check them.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            This checking is very simple with <a target="_blank" href="https://www.w3schools.com/jsref/jsref_if.asp">if statement</a>. You may write <b class="code">if (num !== 0)</b>, but Javascript is smart and consider each non-zero number as boolean <b class="code">true</b>. So you may just write the following. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    if (num) ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            I fill it's almost all, but my <b class="code">res</b> is still equals <b class="code">1</b>. How to accumulate multiplication result?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            if <b class="code">num</b> is not equal 0 (inside <b class="code">if statement</b>), multiply your <b class="code">res</b> with <b class="code">num</b> and reassign back to <b class="code">res</b>
+        </p>
+        <pre class="brush: javascript">
+res = res * num;
+// or
+res *= num;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>So, how my final solution should look like?</p>
+    </div>
+    <div class="answer">
+        <p>
+            You just need to wrap the code into a function expression and return your <b class="code">res</b>.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    for (let char of String(data).split("")) {
+        let num = Number(char);
+        if (num) res*= num;
+    };
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Javascript Hero!</p>
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            In this solution you do no conversion into string, but divide <b class="code">data</b> by <b class="code">10</b> until <b class="code">data</b> becomes less than 1. Multiply <b class="code">res</b> and reminder from the division if it's not equal 0.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    while (data > 1) {
+        let rem = data % 10;
+        res *= rem === 0 ? 1: rem;
+        data = Math.floor(data/10);
+    };
+    return res;
+}
+        </pre>
+        </div>
+        <p>
+            In this solution the anonymous function is used. Number is converted into string, splitting into array and using reduce function getting the result.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var digitsMultip = n => [...""+n].reduce((a,d)=> +a * +d || a, 1)
+        </pre>
+        </div>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Thanks! I know and understand more now! Everything works fine!</p>
+    </div>
+    <div class="answer">
+        👍 Glad to hear it!
+    </div>
+</div>
+</body>

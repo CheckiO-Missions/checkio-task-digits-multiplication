@@ -1,0 +1,173 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Я уявлення не маю, як почати вирішувати цю місію.</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 Загалом, ідея - конвертувати дане число <b class="code">data</b> в рядок і потім брати кожен символ окремо і конвертувати його назад в число.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Добре, з чого мені почати?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Спершу ти можеш проголосити змінну <b class="code">res</b> з початковим значенням <b class="code">1</b> для збереження результатів множення. Зауваж, коли тобі потрібно накопичити результат додавання, ти використовуєш початкове значення <b class="code">0</b>, але у випадку множення це має бути <b class="code">1</b>. 
+        </p>
+        <p>
+            По-друге, ти маєш конвертувати дане число <b class="code">data</b> у рядок, щоб мати змогу пізніше брати символ за символом. Прочитай про метод <a target="_blank" href="https://www.w3schools.com/jsref/jsref_string.asp">String()</a>, щоб зробити це. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data);
+        </pre>
+        <p>
+            Тепер тобі потрібно перетворити рядок у масив з допомогою метода <a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> з аргументом у вигляду порожнього символу.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data).split("");
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Як мені брати окремі символи з масиву?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Використай цикл <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of</a> щоб проходити по масиву. Оскільки ти використовуєш змінну <b class="code">text</b> лише один раз, насправді можна її не декларувати.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Але ж кожен символ зараз це рядок. Що із цим робити?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Так. І ти маєш перетворити кожен символ <b class="code">char</b> назад в число всередині циклу. Зроби це із методом <a target="_blank" href="https://www.w3schools.com/jsref/jsref_number.asp">Number()</a>.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Мені потрібні лише цифри відмінні від 0. Допоможи мені їх перевірити.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ця перевірка дуже проста з <a target="_blank" href="https://www.w3schools.com/jsref/jsref_if.asp">виразом if</a>. Ти можеш написати <b class="code">if num != 0</b>, але Javascript розумний і розглядає кожне не нульове число як логічне <b class="code">true</b>. Тому тобі достатньо написати наступне. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    if (num) ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я відчуваю, що це майже все, але моя змінна <b class="code">res</b> все ще рівна <b class="code">1</b>. Як накопичити результат множення?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Якщо <b class="code">num</b> не рівний 0 (всередині виразу <b class="code">if</b>), помнож свій <b class="code">res</b> з <b class="code">num</b> і присвоюй знову до <b class="code">res</b>
+        </p>
+        <pre class="brush: javascript">
+res = res * num;
+// або
+res *= num;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>То як має виглядати моє остаточне рішення?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Тобі лише потрібно обгорнути код у вираз функції і повернути твій <b class="code">res</b>.
+        </p>
+        <p>Ось повне рішення:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    for (let char of String(data).split("")) {
+        let num = Number(char);
+        if (num) res*= num;
+    };
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Покажи мені більше розв'язків!<br />
+        Адже я хочу бути справжнім 🥇 Героєм Javascript!</p>
+    </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>
+            У цьому розв'язку ти не робиш ніяких перетворень у рядок, а ділиш <b class="code">data</b> на <b class="code">10</b> поки <b class="code">data</b> не стане меншим 1. Множ <b class="code">res</b> на остачу від ділення, якщо вона не дорівнює 0.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    while (data > 1) {
+        let rem = data % 10;
+        res *= rem === 0 ? 1: rem;
+        data = Math.floor(data/10);
+    };
+    return res;
+}
+        </pre>
+        </div>
+        <p>
+            У цьому рішенні використовується анонімна функція. Число перетворюється в рядок, розщеплення на масив і використовуючи функцію <b class="code">reduce</b> зводимо до одного значення.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var digitsMultip = n => [...""+n].reduce((a,d)=> a * +d || a, 1)
+        </pre>
+        </div>
+        <p><b>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</p>
+    </div>
+    <div class="answer">
+        👍 Приємно це чути!
+    </div>
+</div>
+</body>
