@@ -1,0 +1,173 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Je n'ai aucune idée de la manière de commencer à résoudre cette mission.</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 L'idée générale est de convertir un <b class="code">data</b> donné en chaîne de caractères, puis de prendre chaque caractère séparément et de le reconvertir en entier.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Ok, par quoi dois-je commencer?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Tout d'abord, vous pouvez déclarer la variable <b class="code">res</b> avec la valeur initiale <b class="code">1</b> pour stocker le résultat de la multiplication. Notez que si vous avez besoin d'agréger le résultat d'une addition, vous utilisez la valeur initiale <b class="code">0</b>, mais dans le cas d'une multiplication, il s'agit de <b class="code">1</b>. 
+        </p>
+        <p>
+            Deuxièmement, vous devez convertir un <b class="code">data</b> donné en chaîne de caractères pour pouvoir prendre les chiffres un par un. Pour ce faire, lisez la méthode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_string.asp">String()</a>. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data);
+        </pre>
+        <p>
+            Vous devez maintenant convertir la chaîne en tableau à l'aide de la méthode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> avec comme argument un caractère vide.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data).split("");
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, comment récupérer des caractères distincts dans le tableau?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Utilisez <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> pour itérer sur le tableau. Comme vous n'utiliserez la variable <b class="code">text</b> qu'une seule fois, vous n'avez pas besoin de la déclarer.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Mais chaque caractère est maintenant une chaîne de caractères. Que faire avec?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Oui. Et vous devez reconvertir chaque <b class="code">char</b> en entier à l'intérieur de la boucle. Faites-le avec la méthode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_number.asp">Number()</a>.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je n'ai besoin que de chiffres différents de 0. Aidez-moi à les vérifier.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Cette vérification est très simple avec <a target="_blank" href="https://www.w3schools.com/jsref/jsref_if.asp">if statement</a>. Vous pouvez écrire <b class="code">if (num!== 0)</b>, mais Javascript est intelligent et considère chaque nombre non nul comme un booléen <b class="code">true</b>. Vous pouvez donc écrire ce qui suit. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    if (num) ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je remplis presque tout, mais mon <b class="code">res</b> est toujours égal à <b class="code">1</b>. Comment accumuler le résultat d'une multiplication?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            si <b class="code">num</b> n'est pas égal à 0 (à l'intérieur de <b class="code">if statement</b>), multipliez votre <b class="code">res</b> par <b class="code">num</b> et réaffectez-le à <b class="code">res</b>
+        </p>
+        <pre class="brush: javascript">
+res = res * num;
+// or
+res *= num;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Alors, à quoi devrait ressembler ma solution finale?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit d'intégrer le code dans une expression de fonction et de renvoyer votre <b class="code">res</b>.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    for (let char of String(data).split("")) {
+        let num = Number(char);
+        if (num) res*= num;
+    };
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Montrez-moi d'autres solutions!<br />
+        parce que je veux être un vrai 🥇 Javascript Hero!</p>
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Dans cette solution, vous ne faites pas de conversion en chaîne de caractères, mais vous divisez <b class="code">data</b> par <b class="code">10</b> jusqu'à ce que <b class="code">data</b> devienne inférieur à 1. Vous multipliez <b class="code">res</b> et vous vous souvenez de la division si elle n'est pas égale à 0.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    while (data > 1) {
+        let rem = data % 10;
+        res *= rem === 0? 1: rem;
+        data = Math.floor(data/10);
+    };
+    return res;
+}
+        </pre>
+        </div>
+        <p>
+            Dans cette solution, la fonction anonyme est utilisée. Le nombre est converti en chaîne de caractères, divisé en tableau et la fonction reduce permet d'obtenir le résultat.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var digitsMultip = n => [...""+n].reduce((a,d)=> +a * +d || a, 1)
+        </pre>
+        </div>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Merci beaucoup! Je comprends mieux maintenant! Tout fonctionne bien!</p>
+    </div>
+    <div class="answer">
+        👍 Heureux de l'apprendre!
+    </div>
+</div>
+</body>
