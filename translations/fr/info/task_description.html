@@ -1,38 +1,36 @@
-<img class="for_info_only half" title="juggler" src="{{MEDIA}}juggler.png" alt="juggler" style="max-height: 300px;float: left"/>
+<img class="for_info_only half" title="juggler" src="{{MEDIA}}juggler.png" alt="juggler" style="max-height: 300px;float: left;"/>
 <p>
-    On vous donne un entier positif.
-    Votre fonction doit calculer le produit de ses chiffres en excluant les z&eacute;ros.
+    On vous donne un nombre positif.
+    Votre fonction doit calculer le produit des chiffres en excluant les zéros.
 </p>
 
 <p>
-    Par exemple : Le nombre donn&eacute; est 123405. Le r&eacute;sultat sera 1*2*3*4*5=120 (n'oubliez pas d'exclure les z&eacute;ros).
-</p>
-
-
-<p>
-    <strong>Entr&eacute;e : </strong> Un entier positif.
+    Par exemple, le nombre donné est 123405: Le nombre donné est 123405. Le résultat sera 1*2*3*4*5=120 (n'oubliez pas d'exclure les zéros).
 </p>
 
 <p>
-    <strong>Sortie : </strong> Le produit des chiffres en tant qu'entier.
+   <strong>Entrée:</strong> Un<span>nombre</span> positif {% if is_js %} <span>(number)</span><span> </span>{% else %} <span>entier</span> <span>(integer)</span>{% endif %}.
 </p>
 
-<div style="clear: both;"></div>
+<p>
+   <strong>Sortie:</strong> Le produit des chiffres comme {% if is_js %}un <span>nombre</span> <span>(number)</span>{% else %} un <span>entier</span> <span>(integer)</span>{% endif %}.
+</p>
 
 <div class="for_info_only">
     <p>
-        <strong>Exemple :</strong>
+        <strong>Exemples:</strong>
     </p>
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 <p class="for_info_only">
-    <strong>&Agrave; quoi cela sert : </strong>
-    Cette t&acirc;che peut vous apprendre &agrave; r&eacute;soudre un probl&egrave;me avec une conversion simple de type de donn&eacute;e.
+   <strong>Comment l'utiliser:</strong>
+    Cette tâche peut vous apprendre à résoudre un problème avec une simple conversion de type de données.
 </p>
 
 <p>
-    <strong>Pr&eacute;condition : </strong>
-        0 &lt; nombre &lt; 10<sup>6</sup>
+    <strong>Condition préalable:</strong><br />
+    <ul>
+    <li>0 &lt; nombre &lt;<sup>106</sup></li>
+    </ul>
 </p>
-
