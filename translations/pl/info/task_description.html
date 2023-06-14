@@ -1,0 +1,36 @@
+<img class="for_info_only half" title="juggler" src="{{MEDIA}}juggler.png" alt="juggler" style="max-height: 300px;float: left;"/>
+<p>
+    Otrzymują Państwo liczbę dodatnią.
+    Funkcja powinna obliczyć iloczyn cyfr z wyłączeniem zer.
+</p>
+
+<p>
+    Na przykład: Podana liczba to 123405. Wynikiem będzie 1*2*3*4*5=120 (proszę pamiętać o wykluczeniu zer).
+</p>
+
+<p>
+   <strong>Dane wejściowe:</strong> Dodatnia liczba całkowita <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Iloczyn cyfr jako liczba całkowita <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p class="for_info_only">
+   <strong>Jak to jest używane:</strong>
+    To zadanie może nauczyć Państwa jak rozwiązać problem z prostą konwersją typu danych.
+</p>
+
+<p>
+    <strong>Warunek wstępny:</strong><br />
+    <ul>
+    <li>0 &lt; liczba &lt;<sup>106</sup></li>
+    </ul>
+</p>
