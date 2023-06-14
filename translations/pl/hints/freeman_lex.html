@@ -1,0 +1,175 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Nie mam pojęcia, jak zacząć rozwiązywać tę misję.</p>
+    </div>
+    <div class="answer">
+        <p>
+            ogólny pomysł polega na przekonwertowaniu danego <b class="code">number</b> na ciąg znaków, a następnie pobraniu każdego znaku osobno i przekonwertowaniu go z powrotem na liczbę całkowitą.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Ok, od czego powinienem zacząć?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Po pierwsze, może Pan zadeklarować zmienną <b class="code">res</b> z wartością początkową <b class="code">1</b> do przechowywania wyniku mnożenia. Proszę zauważyć, że w przypadku agregacji wyniku dodawania, należy użyć wartości początkowej <b class="code">0</b>, natomiast w przypadku mnożenia powinna to być wartość <b class="code">1</b>. 
+        </p>
+        <p>
+            Po drugie, należy przekonwertować daną <b class="code">number</b> na ciąg znaków, aby móc pobierać cyfry jedna po drugiej. W tym celu proszę zapoznać się z wbudowaną funkcją <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a>. 
+        </p>
+        <pre class="brush: python">
+res = 1
+text = str(number)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, jak uzyskać oddzielne znaki z ciągu?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Proszę użyć <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> do iteracji po <b class="code">text</b>. Ponieważ użyje Pan zmiennej <b class="code">text</b> tylko raz, nie musi Pan jej deklarować.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ale każdy znak jest teraz ciągiem znaków. Co z nim zrobić?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Tak. Proszę przekonwertować każdy <b class="code">char</b> z powrotem na liczbę całkowitą wewnątrz pętli. Proszę to zrobić za pomocą wbudowanej funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a>.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Potrzebuję tylko cyfr nie równych 0. Proszę mi pomóc je sprawdzić.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            To sprawdzanie jest bardzo proste z <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a>. Można napisać <b class="code">if num!= 0</b>, ale Python jest sprytny i traktuje każdą niezerową liczbę jako wartość logiczną <b class="code">True</b>. Można więc po prostu napisać następujące polecenie. 
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    if num:
+        ...
+        </pre>
+        <p>
+            Mogą Państwo użyć <a target="_blank" href="https://towardsdatascience.com/the-walrus-operator-in-python-a315e4f84583">walrus operator</a> do napisania dwóch ostatnich wyrażeń w bardziej kompaktowy sposób. Operator Walrus pozwala przypisać wyrażenie do zmiennej już w pierwszym użyciu.
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    if num:= int(char):
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Wypełniłem go prawie w całości, ale moje <b class="code">res</b> wciąż jest równe <b class="code">1</b>. Jak skumulować wynik mnożenia?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            jeśli <b class="code">num</b> nie jest równe 0 (wewnątrz <b class="code">if statement</b>), proszę pomnożyć <b class="code">res</b> przez <b class="code">num</b> i ponownie przypisać do <b class="code">res</b>
+        </p>
+        <pre class="brush: python">
+res = res * num
+# or
+res *= num
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Jak powinno wyglądać moje ostateczne rozwiązanie?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Musi Pan tylko zawinąć kod w wyrażenie funkcji i zwrócić <b class="code">res</b>.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    for char in str(number):
+        if num:= int(char):
+            res *= num
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym 🥇 Python Ninnjaa!</p>
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę pobrać!</p>
+        <p>
+            W tym rozwiązaniu nie dokonuje Pan konwersji na ciąg znaków, ale dzieli <b class="code">number</b> przez <b class="code">10</b>, aż <b class="code">number</b> stanie się mniejsze niż 1. Proszę pomnożyć <b class="code">res</b> i wyjść z dzielenia, jeśli nie jest równe 0.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    while number> 1:
+        number, rem = divmod(number, 10)
+        res = res * (1, rem)[bool(rem)]
+        
+    return res
+        </pre>
+        </div>
+        <p>
+            W tym rozwiązaniu tworzy Pan generator, który odfiltrowuje znaki zerowe, łączy je ze znakiem mnożenia (między każdymi dwoma), a następnie ocenia ciąg - konwertuje go z ciągu na wyrażenie i wykonuje niezbędne obliczenia.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    return eval('*'.join(char for char in str(number) if char!= '0'))
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!</p>
+    </div>
+    <div class="answer">
+        miło mi to słyszeć!
+    </div>
+</div>
+</body>
