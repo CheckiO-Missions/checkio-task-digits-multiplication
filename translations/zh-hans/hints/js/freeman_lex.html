@@ -1,0 +1,173 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>我不知道如何开始解决这个任务。</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 总的想法是将给定的<b class="code">data</b> 转换为字符串，然后分别取每个字符，再将其转换为整数。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>好吧，我应该从什么地方开始呢？</p>
+    </div>
+    <div class="answer">
+        <p>
+            首先，你可以声明变量<b class="code">res</b> ，其初始值为<b class="code">1</b> ，以存储乘法的结果。注意，如果你需要汇总加法的结果，你可以使用初始值<b class="code">0</b> ，但在乘法的情况下，应该是<b class="code">1</b> 。 
+        </p>
+        <p>
+            其次，你需要将给定的<b class="code">data</b> 转换为字符串，以便能够逐个取数。请阅读<a target="_blank" href="https://www.w3schools.com/jsref/jsref_string.asp">String()</a> 的方法来实现这一点。 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data);
+        </pre>
+        <p>
+            现在你需要用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> 方法将字符串转换成数组，参数为空字符。
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data).split("");
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好的，如何从数组中获得独立的字符？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> 来遍历数组。由于你将只使用一次变量<b class="code">text</b> ，你实际上不需要声明它。
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            但现在每个字符都是一个字符串。如何处理它呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            是的。你需要在循环中把每个<b class="code">char</b> 转换为整数。用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_number.asp">Number()</a> 方法来做。
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我只需要不等于0的数字，帮助我检查它们。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_if.asp">if statement</a> ，这种检查非常简单。你可以写成<b class="code">if (num!== 0)</b> ，但Javascript很聪明，它把每个非零的数字看作是布尔值<b class="code">true</b> 。所以你可以只写下面的内容。 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    if (num) ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我把它填得差不多了，但我的<b class="code">res</b> 仍然等于<b class="code">1</b> 。如何累积乘法的结果？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            如果<b class="code">num</b> 不等于0（在<b class="code">if statement</b> 内），将你的<b class="code">res</b> 与<b class="code">num</b> 相乘，然后重新分配到<b class="code">res</b>
+        </p>
+        <pre class="brush: javascript">
+res = res * num;
+// or
+res *= num;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>那么，我的最终解决方案应该是什么样子的？</p>
+    </div>
+    <div class="answer">
+        <p>
+            你只需要将代码包装成一个函数表达式并返回你的<b class="code">res</b> 。
+        </p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    for (let char of String(data).split("")) {
+        let num = Number(char);
+        if (num) res*= num;
+    };
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>告诉我更多的解决方案!<br />
+        因为我想成为一个真正的🥇 Javascript英雄!</p>
+    </div>
+    <div class="answer">
+        <p>当然，抓住它!</p>
+        <p>
+            在这个解决方案中，你不需要转换为字符串，而是用<b class="code">data</b> 除以<b class="code">10</b> ，直到<b class="code">data</b> 小于1。乘以<b class="code">res</b> ，如果不等于0，就从除法中提醒一下。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    while (data> 1) {
+        let rem = data % 10;
+        res *= rem === 0? 1: rem;
+        data = Math.floor(data/10);
+    };
+    return res;
+}
+        </pre>
+        </div>
+        <p>
+            在这个解决方案中，使用了匿名函数。数字被转换为字符串，分割成数组，并使用reduce函数得到结果。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var digitsMultip = n => [...""+n].reduce((a,d)=> +a * +d || a, 1)
+        </pre>
+        </div>
+        <p>点击任务菜单上的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>谢谢!我现在知道并理解了更多!一切工作都很顺利!</p>
+    </div>
+    <div class="answer">
+        👍很高兴听到这个消息!
+    </div>
+</div>
+</body>
