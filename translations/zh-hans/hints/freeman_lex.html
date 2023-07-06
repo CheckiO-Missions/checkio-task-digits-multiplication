@@ -1,0 +1,175 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>我不知道如何开始解决这个任务。</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 大致的想法是将给定的<b class="code">number</b> 转换为字符串，然后将每个字符分别拿出来，再转换为整数。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>好吧，我应该从什么地方开始呢？</p>
+    </div>
+    <div class="answer">
+        <p>
+            首先，你可以声明变量<b class="code">res</b> ，其初始值为<b class="code">1</b> ，以存储乘法的结果。注意，如果你需要汇总加法的结果，你可以使用初始值<b class="code">0</b> ，但在乘法的情况下，应该是<b class="code">1</b> 。 
+        </p>
+        <p>
+            其次，你需要将给定的<b class="code">number</b> 转换为字符串，以便能够逐个取数。请阅读内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> 函数来完成这个任务。 
+        </p>
+        <pre class="brush: python">
+res = 1
+text = str(number)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好了，如何从字符串中获取独立的字符？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> 来遍历<b class="code">text</b> 。由于你只使用一次变量<b class="code">text</b> ，所以实际上你不需要声明它。
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            但现在每个字符都是一个字符串。怎么处理它呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            是的。你需要在循环中把每个<b class="code">char</b> 转换为整数。用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int()</a> 函数来做。
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我只需要不等于0的数字，帮我检查一下。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            这种检查用<a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a> 非常简单。你可以写<b class="code">if num!= 0</b> ，但是 Python 很聪明，它把每个非零的数字都看作布尔值<b class="code">True</b> 。所以你可以直接写如下。 
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    num = int(char)
+    if num:
+        ...
+        </pre>
+        <p>
+            你可以用<a target="_blank" href="https://towardsdatascience.com/the-walrus-operator-in-python-a315e4f84583">walrus operator</a> 来把最后两个表达式写得更紧凑。Walrus 操作符允许在第一次使用时就将表达式分配给变量。
+        </p>
+        <pre class="brush: python">
+res = 1
+for char in str(number):
+    if num:= int(char):
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我几乎填满了它，但我的<b class="code">res</b> 仍然等于<b class="code">1</b> 。如何累积乘法的结果？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            如果<b class="code">num</b> 不等于0（在<b class="code">if statement</b> 内），将你的<b class="code">res</b> 与<b class="code">num</b> 相乘，然后重新分配到<b class="code">res</b>
+        </p>
+        <pre class="brush: python">
+res = res * num
+# or
+res *= num
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>那么，我的最终解决方案应该是什么样子的？</p>
+    </div>
+    <div class="answer">
+        <p>
+            你只需要将代码包装成一个函数表达式并返回你的<b class="code">res</b> 。
+        </p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    for char in str(number):
+        if num:= int(char):
+            res *= num
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>告诉我更多的解决方案!<br />
+        因为我想成为一个真正的🥇 Python Ninnjaa!</p>
+    </div>
+    <div class="answer">
+        <p>当然，抓住它!</p>
+        <p>
+            在这个解决方案中，你不需要转换为字符串，而是用<b class="code">number</b> 除以<b class="code">10</b> ，直到<b class="code">number</b> 小于1。乘以<b class="code">res</b> ，如果不等于0就从除法中提醒。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    res = 1
+    while number> 1:
+        number, rem = divmod(number, 10)
+        res = res * (1, rem)[bool(rem)]
+        
+    return res
+        </pre>
+        </div>
+        <p>
+            在这个解决方案中，你做一个生成器来过滤掉零字符，用乘号（在每两个字符之间）连接它们，然后评估字符串--把它从字符串转换成表达式，并做必要的计算。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(number: int) -> int:
+
+    return eval('*'.join(char for char in str(number) if char!= '0'))
+        </pre>
+        </div>
+        <p>点击任务菜单中的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>谢谢!我现在知道并理解了更多!一切运作正常</p>
+    </div>
+    <div class="answer">
+        👍很高兴听到这个消息!
+    </div>
+</div>
+</body>
