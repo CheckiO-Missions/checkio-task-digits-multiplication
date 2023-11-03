@@ -1,36 +1,36 @@
 <img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
 <p>
-    Gegeben ist eine positive Ganzzahl.
-    Deine Funktion soll das Produkt der Ziffern, ohne enthaltene Nullen, berechnen.
+    Sie erhalten eine positive Zahl.
+    Ihre Funktion sollte das Produkt der Ziffern ohne Nullen berechnen.
 </p>
 
 <p>
-    Zum Beispiel: Die Zahl ist 123405. Das Ergebnis ist 1*2*3*4*5=120 (Vergiss nicht die Nullen auszulassen).
+    Ein Beispiel: Die angegebene Zahl ist 123405. Das Ergebnis wird 1*2*3*4*5=120 sein (vergessen Sie nicht, die Nullen auszuschließen).
 </p>
 
 <p>
-    <strong>Eingabe: </strong> Eine positive Ganzzahl (Integer).
+   <strong>Eingabe:</strong> Eine positive ganze Zahl <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
 
 <p>
-    <strong>Ausgabe: </strong> Das Produkt der einzelnen Ziffern als Ganzzahl.
+   <strong>Ausgabe:</strong> Das Produkt der Ziffern als ganze Zahl <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
-
-<div style="clear: both;"></div>
 
 <div class="for_info_only">
     <p>
-        <strong>Beispiel:</strong>
+        <strong>Beispiele:</strong>
     </p>
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 <p class="for_info_only">
-    <strong>Wozu ist das gut: </strong>
-    Diese Aufgabe zeigt Dir, wie man ein Problem mittels einfacher Typumwandlung löst.
+   <strong>Wie es verwendet wird:</strong>
+    Mit dieser Aufgabe können Sie lernen, wie Sie ein Problem mit einer einfachen Datentypkonvertierung lösen.
 </p>
 
 <p>
-    <strong>Bedingung: </strong>
-        0 &lt; number &lt; 10<sup>6</sup>
+    <strong>Vorbedingung:</strong><br />
+    <ul>
+    <li>0 &lt; Zahl &lt;<sup>106</sup></li>
+    </ul>
 </p>

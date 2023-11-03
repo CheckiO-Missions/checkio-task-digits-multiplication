@@ -1,0 +1,173 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.</p>
+    </div>
+    <div class="answer">
+        <p>
+            die allgemeine Idee ist, eine gegebene <b class="code">data</b> in eine Zeichenkette umzuwandeln und dann jedes Zeichen einzeln zu nehmen und wieder in eine Ganzzahl umzuwandeln.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Ok, womit soll ich anfangen?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Zunächst können Sie die Variable <b class="code">res</b> mit dem Anfangswert <b class="code">1</b> deklarieren, um das Ergebnis der Multiplikation zu speichern. Beachten Sie, dass Sie, wenn Sie das Ergebnis der Addition aggregieren müssen, den Anfangswert <b class="code">0</b> verwenden, aber im Falle der Multiplikation sollte es <b class="code">1</b> sein. 
+        </p>
+        <p>
+            Zweitens müssen Sie eine gegebene <b class="code">data</b> in eine Zeichenkette umwandeln, damit Sie die Ziffern einzeln übernehmen können. Informieren Sie sich über die Methode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_string.asp">String()</a>, um dies zu tun. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data);
+        </pre>
+        <p>
+            Nun müssen Sie die Zeichenkette mit der Methode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> in ein Array umwandeln, dessen Argument ein leeres Zeichen ist.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+let text = String(data).split("");
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, wie bekomme ich einzelne Zeichen aus dem Array?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Verwenden Sie <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a>, um über das Array zu iterieren. Da Sie die Variable <b class="code">text</b> nur einmal verwenden werden, müssen Sie sie nicht deklarieren.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Aber jedes Zeichen ist jetzt eine Zeichenkette. Was tun Sie damit?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ja. Und Sie müssen jedes <b class="code">char</b> innerhalb der Schleife wieder in eine Ganzzahl umwandeln. Tun Sie dies mit der Methode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_number.asp">Number()</a>.
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich brauche nur Ziffern ungleich 0. Helfen Sie mir, diese zu überprüfen.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Diese Überprüfung ist mit <a target="_blank" href="https://www.w3schools.com/jsref/jsref_if.asp">if statement</a> sehr einfach. Sie können <b class="code">if (num!== 0)</b> schreiben, aber Javascript ist schlau und betrachtet jede Zahl ungleich Null als boolean <b class="code">true</b>. Sie können also einfach das Folgende schreiben. 
+        </p>
+        <pre class="brush: javascript">
+let res = 1;
+for (let char of String(data).split("")) {
+    let num = Number(char);
+    if (num) ...}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich habe fast alles ausgefüllt, aber mein <b class="code">res</b> ist immer noch gleich <b class="code">1</b>. Wie kann ich das Ergebnis der Multiplikation akkumulieren?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            wenn <b class="code">num</b> nicht gleich 0 ist (innerhalb von <b class="code">if statement</b>), multiplizieren Sie Ihr <b class="code">res</b> mit <b class="code">num</b> und weisen Sie es zurück zu <b class="code">res</b>
+        </p>
+        <pre class="brush: javascript">
+res = res * num;
+// or
+res *= num;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Wie sollte also meine endgültige Lösung aussehen?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen den Code nur in einen Funktionsausdruck einpacken und Ihre <b class="code">res</b> zurückgeben.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    for (let char of String(data).split("")) {
+        let num = Number(char);
+        if (num) res*= num;
+    };
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Zeigen Sie mir mehr Lösungen!<br />
+        denn ich möchte ein echter 🥇 Javascript-Held sein!</p>
+    </div>
+    <div class="answer">
+        <p>Klar, schnappen Sie es sich!</p>
+        <p>
+            In dieser Lösung nehmen Sie keine Umwandlung in einen String vor, sondern teilen <b class="code">data</b> durch <b class="code">10</b>, bis <b class="code">data</b> kleiner als 1 ist. Multiplizieren Sie <b class="code">res</b> und erinnern Sie sich an die Division, wenn sie nicht gleich 0 ist.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function digitsMultip(data: number): number {
+
+    let res = 1;
+    while (data> 1) {
+        let rem = data % 10;
+        res *= rem === 0? 1: rem;
+        data = Math.floor(data/10);
+    };
+    return res;
+}
+        </pre>
+        </div>
+        <p>
+            Bei dieser Lösung wird die anonyme Funktion verwendet. Die Zahl wird in einen String umgewandelt, in ein Array aufgeteilt und das Ergebnis mit der Funktion reduce ermittelt.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var digitsMultip = n => [...""+n].reduce((a,d)=> +a * +d || a, 1)
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!</p>
+    </div>
+    <div class="answer">
+        👍 Freut mich zu hören!
+    </div>
+</div>
+</body>
